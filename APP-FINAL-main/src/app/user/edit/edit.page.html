@@ -1,0 +1,147 @@
+<ion-header>
+  <ion-toolbar>
+
+    <!-- Acesso ao menu -->
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <!-- Título da página -->
+    <ion-title>Editar Cadastro</ion-title>
+
+    <!-- Logotipo -->
+    <ion-img src="assets/logof.png" slot="end" class="pages-logo"></ion-img>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-no-padding ion-padding-horizontal">
+
+  <p>Edite apenas os campos necessários. Você será responsável caso preencha
+    informações incorretas ou inverídicas.</p>
+  <p class="ion-text-center">
+    <ion-text color="danger"><small>Todos os campos são obrigatórios.</small></ion-text>
+  </p>
+
+  <form [formGroup]="registerForm" (ngSubmit)="registerSend()">
+
+    <ion-list lines="full" class="ion-no-padding">
+
+      <!-- Campo nome (name) -->
+            <ion-item>
+                <ion-label for="name" position="floating" color="primary">
+                    Nome:
+                    <ion-text color="danger" *ngIf="registerForm.controls.name.errors">
+                        <small *ngIf="registerForm.controls.name.errors.required">* Obrigatório</small>
+                        <small *ngIf="registerForm.controls.name.errors.minlength">* Inválido</small>
+                    </ion-text>
+                </ion-label>
+                <ion-input type="text" id="name" name="name" formControlName="name"></ion-input>
+            </ion-item>
+
+            <!-- Campo data de nascimento (birth) -->
+            <ion-item>
+                <ion-label for="birth" position="floating" color="primary">
+                    Nascimento:
+                    <ion-text color="danger" *ngIf="registerForm.controls.birth.errors">
+                        <small *ngIf="registerForm.controls.birth.errors.required">* Obrigatório</small>
+                        <small *ngIf="registerForm.controls.birth.errors.pattern">* Inválido</small>
+                    </ion-text>
+                </ion-label>
+                <ion-input type="text" id="birth" name="birth" formControlName="birth"></ion-input>
+            </ion-item>
+
+            <!-- Campo endereço (address) -->
+            <ion-item>
+                <ion-label for="address" position="floating" color="primary">
+                    Endereço:
+                    <ion-text color="danger" *ngIf="registerForm.controls.address.errors">
+                        <small *ngIf="registerForm.controls.address.errors.required">* Obrigatório</small>
+                    </ion-text>
+                </ion-label>
+                <ion-textarea type="text" id="address" name="address" formControlName="address" autoGrow="true"></ion-textarea>
+            </ion-item>
+
+            <!-- Campo CPF (cpf) -->
+            <ion-item>
+                <ion-label for="Weight" position="floating" color="primary">
+                    Peso:
+                    <ion-text color="danger" *ngIf="registerForm.controls.Weight.errors">
+                        <small *ngIf="registerForm.controls.Weight.errors.required">* Obrigatório</small>
+                        <small *ngIf="registerForm.controls.Weight.errors.pattern">* Inválido</small>
+                    </ion-text>
+                </ion-label>
+                <ion-input type="text" id="Weight" name="Weight" formControlName="Weight"></ion-input>
+            </ion-item>
+
+
+            <!-- Campo sexo (gender) -->
+            <ion-item>
+                <ion-label for="gender" color="primary">
+                    Genero:
+                    <ion-text color="danger" *ngIf="registerForm.controls.gender.errors">
+                        <small *ngIf="registerForm.controls.gender.errors.required">* Obrigatório</small>
+                    </ion-text>
+                </ion-label>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col><label><input type="radio" formControlName="gender" value="Masculino"> &nbsp;Masculino</label>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col><label><input type="radio" formControlName="gender" value="Feminino"> &nbsp;Feminino</label>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+
+
+
+
+            <!-- Campo Telefone' (telephone) -->
+            <ion-item>
+                <ion-label for="sick" position="floating" color="primary">
+                    Historico de Doenças:
+                    <ion-text color="danger" *ngIf="registerForm.controls.sick.errors">
+                        <small *ngIf="registerForm.controls.sick.errors.required">* Obrigatório</small>
+                        <small *ngIf="registerForm.controls.sick.errors.minlength">* Inválido</small>
+
+                    </ion-text>
+                </ion-label>
+                <ion-input type="text" id="sick" name="sick" formControlName="sick"></ion-input>
+            </ion-item>
+
+            <!-- Campo 'Whatsapp' (whatsapp) -->
+            <ion-item>
+                <ion-label for="blood" position="floating" color="primary">
+                    Tipo Sanguineo:
+                    <ion-text color="danger" *ngIf="registerForm.controls.blood.errors">
+                        <small *ngIf="registerForm.controls.blood.errors.required">* Obrigatório</small>
+                        <small *ngIf="registerForm.controls.blood.errors.pattern">* Inválido</small>
+                        <small *ngIf="registerForm.controls.blood.errors.maxlength">* Inválido</small>
+                        <small *ngIf="registerForm.controls.blood.errors.minlength">* Inválido</small>
+                    </ion-text>
+                </ion-label>
+                <ion-input type="text" id="blood" name="blood" formControlName="blood"></ion-input>
+            </ion-item>
+
+
+
+
+
+            <!-- Campo PCD (pwd) -->
+            <ion-item>
+                <ion-label for="pwd" color="primary">
+                    PCD:
+                </ion-label>
+                <ion-toggle id="pwd" name="pwd" formControlName="pwd" checked></ion-toggle>
+            </ion-item>
+
+        </ion-list>
+
+        <ion-button class="ion-margin-vertical" type="submit" expand="block" [enabled]="registerForm.invalid">Atualizar
+        </ion-button>
+
+    </form>
+
+</ion-content>

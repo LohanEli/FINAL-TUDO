@@ -1,0 +1,133 @@
+<ion-header>
+  <ion-toolbar>
+
+    <!-- Acesso ao menu -->
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <!-- Título da página -->
+    <ion-title>Cadastre-se</ion-title>
+
+    <!-- Logotipo -->
+    <ion-img src="assets/logof.png" slot="end" class="pages-logo"></ion-img>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-no-padding ion-padding-horizontal">
+
+  <h2>Cadastre-se</h2>
+  <p>Preencha todos os campos com atenção para se cadastrar no aplicativo. Você será responsável caso preencha
+    informações incorretas ou inverídicas.</p>
+  <p class="ion-text-center">
+    <ion-text color="danger"><small>Todos os campos são obrigatórios.</small></ion-text>
+  </p>
+
+  <form [formGroup]="registerForm" (ngSubmit)="registerSend()">
+
+    <ion-list lines="full" class="ion-no-padding">
+
+      <ion-item>
+        <ion-label for="name" position="floating" color="secondary">
+            Nome:
+            <ion-text color="tertiary" *ngIf="registerForm.controls.name.errors">
+                <small *ngIf="registerForm.controls.name.errors.required">* Obrigatório</small>
+                <small *ngIf="registerForm.controls.name.errors.minlength">* Inválido</small>
+            </ion-text>
+        </ion-label>
+        <ion-input type="text" id="name" name="name" formControlName="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label for="birth" position="floating" color="secondary">
+            Nascimento:
+            <ion-text color="tertiary" *ngIf="registerForm.controls.birth.errors">
+                <small *ngIf="registerForm.controls.birth.errors.required">* Obrigatório</small>
+                <small *ngIf="registerForm.controls.birth.errors.pattern">* Inválido</small>
+            </ion-text>
+        </ion-label>
+        <ion-input type="text" id="birth" name="birth" formControlName="birth"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label for="gender" color="secondary">
+            Gênero:
+            <ion-text color="tertiary" *ngIf="registerForm.controls.gender.errors">
+                <small *ngIf="registerForm.controls.gender.errors.required">* Obrigatório</small>
+            </ion-text>
+        </ion-label>
+        <ion-grid>
+            <ion-row>
+                <ion-col><label><input type="radio" formControlName="gender" value="Masculino"> &nbsp;Masculino</label>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col><label><input type="radio" formControlName="gender" value="Feminino"> &nbsp;Feminino</label>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-item>
+
+    <ion-item>
+        <ion-label for="address" position="floating" color="secondary">
+            Endereço
+            <ion-text color="tertiary" *ngIf="registerForm.controls.address.errors">
+                <small *ngIf="registerForm.controls.address.errors.required">* Obrigatório</small>
+                <small *ngIf="registerForm.controls.address.errors.pattern">* Inválido</small>
+                <small *ngIf="registerForm.controls.address.errors.minlength">* Inválido</small>
+            </ion-text>
+        </ion-label>
+        <ion-input type="text" id="address" name="address" formControlName="address"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label for="blood" position="floating" color="secondary">
+            Tipo Sanguineo:
+            <ion-text color="tertiary" *ngIf="registerForm.controls.blood.errors">
+                <small *ngIf="registerForm.controls.blood.errors.required">* Obrigatório</small>
+                <small *ngIf="registerForm.controls.blood.errors.minlength">* Inválido</small>
+                <small *ngIf="registerForm.controls.blood.errors.maxlength">* Inválido</small>
+                <small *ngIf="registerForm.controls.blood.errors.pattern">* Inválido</small>
+            </ion-text>
+        </ion-label>
+        <ion-textarea type="text" id="blood" name="blood" formControlName="blood" autoGrow="true"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+        <ion-label for="Weight" position="floating" color="secondary">
+            Peso:
+            <ion-text color="tertiary" *ngIf="registerForm.controls.Weight.errors">
+                <small *ngIf="registerForm.controls.Weight.errors.required">* Obrigatório</small>
+                <small *ngIf="registerForm.controls.Weight.errors.minlength">* Inválido</small>
+                <small *ngIf="registerForm.controls.Weight.errors.pattern">* Inválido</small>
+            </ion-text>
+        </ion-label>
+        <ion-textarea type="text" id="Weight" name="Weight" formControlName="Weight" autoGrow="true"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+        <ion-label for="sick" position="floating" color="secondary">
+            Historico de Doenças:
+            <ion-text color="tertiary" *ngIf="registerForm.controls.sick.errors">
+                <small *ngIf="registerForm.controls.sick.errors.required">* Obrigatório</small>
+                <small *ngIf="registerForm.controls.sick.errors.minlength">* Inválido</small>
+            </ion-text>
+        </ion-label>
+        <ion-textarea type="text" id="sick" name="sick" formControlName="sick" autoGrow="true"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+        <ion-label for="pwd" color="secondary">
+            PCD:
+        </ion-label>
+        <ion-toggle id="pwd" name="pwd" formControlName="pwd" checked></ion-toggle>
+    </ion-item>
+
+</ion-list>
+
+<ion-button class="ion-margin-vertical" type="submit" expand="block" [enabled]="registerForm.invalid">Cadastrar</ion-button>
+
+</form>
+
+</ion-content>
